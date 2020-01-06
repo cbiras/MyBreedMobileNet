@@ -17,7 +17,7 @@
     android:layout_height="wrap_content"
     android:layout_margin="16dp"
     android:layout_gravity="bottom|end"
-    android:src="@drawable/camera"
+    android:src="@drawable/ic_camera_alt_black_24dp"
     android:tint="@android:color/white"/>
 
 </FrameLayout>
