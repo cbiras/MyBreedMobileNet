@@ -4,10 +4,10 @@
   xmlns:tools="http://schemas.android.com/tools"
   android:layout_width="match_parent"
   android:layout_height="match_parent"
-  tools:context=".CaptureActivity">
+  tools:context=".view.CaptureActivity">
 
   <androidx.recyclerview.widget.RecyclerView
-    android:id="@+id/rv_chiuit_list"
+    android:id="@+id/rv_breed_list"
     android:layout_width="match_parent"
     android:layout_height="match_parent"/>
 
@@ -17,7 +17,7 @@
     android:layout_height="wrap_content"
     android:layout_margin="16dp"
     android:layout_gravity="bottom|end"
-    android:src="@drawable/ic_mode_edit"
+    android:src="@drawable/camera"
     android:tint="@android:color/white"/>
 
 </FrameLayout>

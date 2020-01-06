@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="15dp"
+        >
+
+
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="15dp"
+            android:elevation="15dp"
+            android:orientation="horizontal"
+            >
+        <ImageView
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:adjustViewBounds="true"
+                android:scaleType="fitXY"
+                android:src="@drawable/afghan_hound"
+                android:id="@+id/img_content"
+
+            />
+
+        <TextView
+                android:id="@+id/txv_content"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textStyle="bold"
+                android:layout_weight="100"
+                android:gravity="center"
+                android:padding="4dp"
+                android:textSize="14sp"
+                />
+        <ImageButton
+                android:id="@+id/ibt_delete"
+                android:layout_width="30dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:textStyle="bold"
+                android:background="@android:color/transparent"
+                android:src="@android:drawable/ic_delete"
+                />
+
+
+    </LinearLayout>
+
+</com.google.android.material.card.MaterialCardView>
