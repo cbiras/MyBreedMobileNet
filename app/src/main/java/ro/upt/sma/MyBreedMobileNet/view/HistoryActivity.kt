@@ -39,7 +39,6 @@ class HistoryActivity : AppCompatActivity() {
         }
 
         viewModel.breedsLiveData.observe(this, Observer { breed ->
-            //TODO("Instantiate an adapter with the received list and assign it to recycler view")
             rv_breed_list.adapter =
                 RecognizedRecyclerViewAdapter(
                     breed,

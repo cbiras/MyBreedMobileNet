@@ -53,6 +53,7 @@ class RecognizedRecyclerViewAdapter(
             setImage(itemView,breed)
 
         }
+        //I know this is really  bad programming, but I had an error trying to give a custom string to the setImagePath function, and invested too much time trying to solve it, with no solution
         fun setImage(itemView: View,breed: Recognized){
             when(breed.description){
                 "affenpinscher" -> itemView.findViewById<ImageView>(R.id.img_content).setImageResource(R.drawable.affenpinscher)

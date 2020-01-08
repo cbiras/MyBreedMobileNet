@@ -8,7 +8,6 @@ import android.graphics.Bitmap
 
 import android.os.Bundle
 
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
@@ -20,8 +19,32 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import android.os.Handler
 import ro.upt.sma.MyBreedMobileNet.Classifier
-import ro.upt.sma.MyBreedMobileNet.R
+//import ro.upt.sma.MyBreedMobileNet.R
 import ro.upt.sma.MyBreedMobileNet.TFLiteClassifier
+import android.view.MotionEvent
+import android.view.View.OnTouchListener
+import android.view.Gravity
+
+import android.view.LayoutInflater
+
+import androidx.core.content.ContextCompat.getSystemService
+import android.icu.lang.UCharacter.GraphemeClusterBreak.T
+
+import android.content.Context
+import android.view.View
+import android.widget.*
+import io.fotoapparat.view.CameraView
+import kotlinx.android.synthetic.main.popup_window.*
+import kotlinx.android.synthetic.main.popup_window.view.*
+
+import android.widget.TextView
+import androidx.core.app.ComponentActivity
+import androidx.core.app.ComponentActivity.ExtraData
+import androidx.core.content.ContextCompat.getSystemService
+import android.icu.lang.UCharacter.GraphemeClusterBreak.T
+import android.R
+
+
 
 
 class CaptureActivity : AppCompatActivity() {
@@ -39,7 +62,7 @@ class CaptureActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_capture)
+        setContentView(ro.upt.sma.MyBreedMobileNet.R.layout.activity_capture)
 
         fab_add_main.setOnClickListener{goHistory()}
 
@@ -64,7 +87,9 @@ class CaptureActivity : AppCompatActivity() {
 
                 val recognition = classifier.recognize(b)
                 withContext(Dispatchers.Main) {
-                    Toast.makeText(c,recognition[0].label,Toast.LENGTH_SHORT).show()
+
+
+                    onRecognitionShowPopupWindowClick(view,"The breed is:  "+recognition[0].label)
                     val returnIntent = Intent().apply {
                         val content = recognition[0].label
                         putExtra(EXTRA_TEXT, content)
@@ -75,7 +100,7 @@ class CaptureActivity : AppCompatActivity() {
                     handler.postDelayed(Runnable {
                         // Do something after 5s = 5000ms
                         finish()
-                    }, 1300)
+                    }, 2300)
 
 
                 }
@@ -119,6 +144,28 @@ class CaptureActivity : AppCompatActivity() {
             HistoryActivity.COMPOSE_REQUEST_CODE
         )
 
+    }
+    fun onRecognitionShowPopupWindowClick(view: View,s:String) {
+
+
+        val inflater = getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
+        val popupView = inflater.inflate(ro.upt.sma.MyBreedMobileNet.R.layout.popup_window, null)
+
+        val width = LinearLayout.LayoutParams.WRAP_CONTENT
+        val height = LinearLayout.LayoutParams.WRAP_CONTENT
+        val focusable = true
+        val popupWindow = PopupWindow(popupView, width, height, focusable)
+
+
+        popupWindow.showAtLocation(view, Gravity.CENTER, 0, 100)
+        popupWindow.contentView.findViewById<TextView>(ro.upt.sma.MyBreedMobileNet.R.id.popup_text).text = s
+
+        popupView.setOnTouchListener(object : View.OnTouchListener {
+            override fun onTouch(v: View, event: MotionEvent): Boolean {
+                popupWindow.dismiss()
+                return true
+            }
+        })
     }
 
     companion object {
