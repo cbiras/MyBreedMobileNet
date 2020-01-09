@@ -9,8 +9,8 @@ class HomeViewModel(private val breedRepository: BreedRepository):ViewModel() {
     val breedsLiveData = MutableLiveData<List<Recognized>>()
 
     fun retrieveBreeds() {
-        val chiuits = breedRepository.getAll()
-        breedsLiveData.postValue(chiuits)
+        val breeds = breedRepository.getAll()
+        breedsLiveData.postValue(breeds)
     }
 
     fun addBreed(description: String) {

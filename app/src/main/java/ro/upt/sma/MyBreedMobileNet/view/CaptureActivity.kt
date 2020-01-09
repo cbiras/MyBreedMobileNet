@@ -98,7 +98,6 @@ class CaptureActivity : AppCompatActivity() {
 
                     val handler = Handler()
                     handler.postDelayed(Runnable {
-                        // Do something after 5s = 5000ms
                         finish()
                     }, 2300)
 
