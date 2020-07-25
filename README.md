@@ -1,4 +1,4 @@
-#Dog Breeds Identification:
+# Dog Breeds Identification:
 This is a mobile application cabable of detecting 120 dog breeds.
 Neural Network Summary:
 The dataset used for trained was provided by Kaggle and consists of 9982 pictures, split into training and validation images. The image size was 224, the batch size used was 16, and the network was trained for 15 epochs.
